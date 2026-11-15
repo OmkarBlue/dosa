@@ -1,0 +1,1450 @@
+/* ==========================================================================
+   DS LAB — SIGMA CAT EDITION 🐈
+   NEUMORPHIC (SOFT UI) DESIGN SYSTEM
+   Warm Cream & Beige, Soft Dual Shadows, Orange Cat Accents
+   70% Clean Functionality + 30% Sigma Cat Personality
+   ========================================================================== */
+
+:root {
+  /* Neumorphic Cream & Beige Base Palette */
+  --neu-bg: #ece7dc;
+  --neu-surface: #eeeae0;
+  --neu-surface-hover: #f3efe6;
+  --neu-card: #ece7dc;
+  
+  /* Neumorphic Dual Shadows (Soft Natural Depth) */
+  --shadow-light: #ffffff;
+  --shadow-dark: #c5beae;
+  --shadow-dark-subtle: #d3ccbd;
+
+  /* Standard Raised Neumorphic Shadow */
+  --neu-raised: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light);
+  --neu-raised-sm: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  --neu-raised-hover: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+  
+  /* Inset / Pressed Neumorphic Shadow */
+  --neu-inset: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+  --neu-inset-sm: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+
+  /* Warm Orange Cat Accents */
+  --accent-orange: #ea580c;
+  --accent-orange-hover: #c2410c;
+  --accent-orange-light: #fed7aa;
+  --accent-orange-glow: rgba(234, 88, 12, 0.25);
+  --accent-gold: #f59e0b;
+  --accent-emerald: #10b981;
+
+  /* Typography Colors (High Contrast & Clear Readability) */
+  --text-primary: #1c202a;
+  --text-secondary: #4b5363;
+  --text-muted: #788292;
+
+  /* Code Container (Dark Premium Slate with Inset Frame) */
+  --code-bg: #111520;
+  --code-header: #0b0e17;
+  --code-border: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-display: 'Outfit', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--neu-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(circle at 100% 100%, rgba(234, 88, 12, 0.04), transparent 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle background cat silhouette watermarks */
+.bg-silhouette-watermark {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.06;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.bg-silhouette-top-right {
+  top: 100px;
+  right: 40px;
+  width: 140px;
+  transform: rotate(8deg);
+}
+
+.bg-silhouette-bottom-left {
+  bottom: 80px;
+  left: 30px;
+  width: 160px;
+  transform: rotate(-10deg);
+}
+
+/* ==========================================================================
+   Header Navigation (Soft Neumorphic Floating Bar)
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 1rem;
+  z-index: 200;
+  max-width: 1220px;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  background: var(--neu-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neu-raised);
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.25s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.mascot-avatar-wrapper {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  background: var(--neu-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neu-inset-sm);
+  padding: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo-group:hover .mascot-avatar-wrapper {
+  transform: scale(1.06) rotate(-3deg);
+}
+
+.header-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 3px);
+}
+
+.logo-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.neu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  user-select: none;
+}
+
+.neu-badge.active-status {
+  color: var(--text-primary);
+}
+
+.pulse-cat-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-orange);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-orange);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* ==========================================================================
+   Main Container
+   ========================================================================== */
+
+main {
+  flex: 1;
+  max-width: 1220px;
+  width: 100%;
+  margin: 1.75rem auto 0;
+  padding: 0 1.5rem 5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.view-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Homepage Hero Box (Neumorphic Card with Mascot)
+   ========================================================================== */
+
+.hero-box {
+  background: var(--neu-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--neu-raised);
+  padding: 2.75rem 2.75rem 2.25rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-tag-pill img {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.hero-title .text-orange-gradient {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+/* Mascot Card (Neumorphic Raised Circle with Real Cat) */
+.hero-mascot-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.hero-cat-avatar {
+  width: 165px;
+  height: 165px;
+  background: var(--neu-bg);
+  border-radius: 50%;
+  box-shadow: var(--neu-raised);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-mascot-card:hover .hero-cat-avatar {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: var(--neu-raised-hover);
+}
+
+.hero-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.hero-mascot-card:hover .hero-cat-img {
+  transform: scale(1.08);
+}
+
+.hero-cat-tag {
+  margin-top: 0.85rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  color: var(--accent-orange);
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Tasteful Soft Speech Bubble */
+.hero-cat-bubble {
+  position: absolute;
+  top: -24px;
+  right: -15px;
+  background: var(--neu-surface-hover);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neu-raised-sm);
+  padding: 0.5rem 0.95rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  animation: subtleFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtleFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+/* ==========================================================================
+   Neumorphic Search & Filter Controls
+   ========================================================================== */
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.search-box-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-neu {
+  width: 100%;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem 1.1rem 3.4rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input-neu:focus {
+  border-color: rgba(234, 88, 12, 0.4);
+  box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light), 0 0 0 2px var(--accent-orange-glow);
+}
+
+.search-input-neu::placeholder {
+  color: var(--text-muted);
+}
+
+.search-cat-icon {
+  position: absolute;
+  left: 1.25rem;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  color: var(--accent-orange);
+}
+
+/* Category Filter Chips */
+.category-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.neu-filter-btn {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.15rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.neu-filter-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--neu-raised);
+  color: var(--text-primary);
+}
+
+.neu-filter-btn.active {
+  box-shadow: var(--neu-inset-sm);
+  color: var(--accent-orange);
+  border-color: rgba(234, 88, 12, 0.25);
+}
+
+.btn-badge {
+  background: rgba(234, 88, 12, 0.1);
+  color: var(--accent-orange);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Full-Width Neumorphic Experiment Cards
+   ========================================================================== */
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.neu-card {
+  background: var(--neu-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neu-raised);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 1.35rem 1.8rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.neu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--neu-raised-hover);
+  background: var(--neu-surface-hover);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-exp-num {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-family: var(--font-mono);
+  font-weight: 900;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.card-exp-num .lbl {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.card-exp-num .val {
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--accent-orange);
+}
+
+.neu-card:hover .card-exp-num {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+  transform: scale(1.03);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.tag-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tag-badge.stack { color: #059669; }
+.tag-badge.queue { color: #0284c7; }
+.tag-badge.list { color: #7c3aed; }
+
+.cat-stamp-text {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  letter-spacing: 0.03em;
+}
+
+.card-title-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.neu-card:hover .card-title-text {
+  color: var(--accent-orange-hover);
+}
+
+/* Card Cat Reaction Avatar */
+.card-cat-stamp {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.card-cat-stamp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.neu-card:hover .card-cat-stamp {
+  transform: scale(1.12) rotate(4deg);
+}
+
+.card-arrow-box {
+  width: 42px;
+  height: 42px;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.neu-card:hover .card-arrow-box {
+  background: var(--accent-orange);
+  color: #ffffff;
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px var(--accent-orange-glow);
+}
+
+/* ==========================================================================
+   CODE PAGE VIEW (Max Readability, Calm Background, Safe Edge Cats)
+   ========================================================================== */
+
+.code-layout-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Top Navigation */
+.code-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-back-neu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--neu-bg);
+  border-radius: var(--radius-full);
+  box-shadow: var(--neu-raised-sm);
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-back-neu:hover {
+  transform: translateX(-3px);
+  color: var(--accent-orange);
+  box-shadow: var(--neu-raised);
+}
+
+.btn-back-neu kbd {
+  background: var(--neu-surface-hover);
+  box-shadow: var(--neu-inset-sm);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.code-nav-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrow-nav-btn {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.arrow-nav-btn:hover:not(:disabled) {
+  color: var(--accent-orange);
+  box-shadow: var(--neu-raised);
+}
+
+.arrow-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Experiment Meta Box */
+.code-meta-card {
+  background: var(--neu-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--neu-raised);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 1.85rem 2.25rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.code-tag-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.code-number-pill {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.95rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.code-category-pill {
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.code-experiment-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.code-aim-objective-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.code-aim-objective-grid strong {
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+/* ==========================================================================
+   PROMINENT COPY CODE BUTTON & COMPANION CAT (Calm & Clean)
+   ========================================================================== */
+
+.action-companion-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.copy-button-container {
+  flex: 1;
+  min-width: 260px;
+}
+
+.btn-big-copy-neu {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 2rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light), 0 4px 15px var(--accent-orange-glow);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.btn-big-copy-neu:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
+  box-shadow: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light), 0 6px 20px var(--accent-orange-glow);
+}
+
+.btn-big-copy-neu:active {
+  transform: translateY(1px);
+  box-shadow: var(--neu-inset-sm);
+}
+
+.btn-big-copy-neu.copied {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-big-copy-neu svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Companion Cat Staring At Copy Button (Discreet, Calm, Outer Edge) */
+.companion-cat-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 1.1rem 0.4rem 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.companion-cat-box:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--neu-raised);
+}
+
+.companion-cat-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.companion-cat-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.companion-bubble-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.companion-speaker {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+}
+
+.companion-quote {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Download file button */
+.btn-download-neu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-raised-sm);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.4rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-download-neu:hover {
+  color: var(--accent-orange);
+  box-shadow: var(--neu-raised);
+}
+
+/* ==========================================================================
+   Dark Code Editor Window (IDE Style with Inset Frame)
+   ========================================================================== */
+
+.code-ide-window {
+  background: var(--code-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: 10px 10px 24px var(--shadow-dark), -10px -10px 24px var(--shadow-light);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 20;
+  border: 1px solid var(--code-border);
+}
+
+.code-ide-header {
+  background: var(--code-header);
+  border-bottom: 1px solid var(--code-border);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.window-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.ide-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.ide-dot.red { background: #ef4444; }
+.ide-dot.yellow { background: #f59e0b; }
+.ide-dot.green { background: #10b981; }
+
+.ide-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.ide-stats {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* Code Pre and Highlighting */
+.code-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  padding: 1.25rem 0;
+  background: var(--code-bg);
+}
+
+.ide-line-numbers {
+  padding: 0 1rem 0 1.5rem;
+  text-align: right;
+  color: #475569;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  min-width: 3.5rem;
+}
+
+.code-pre-element {
+  margin: 0;
+  padding: 0 1.5rem 0 1.25rem;
+  flex: 1;
+  overflow-x: visible;
+  white-space: pre;
+}
+
+.code-pre-element code {
+  font-family: inherit;
+  color: #f1f5f9;
+}
+
+/* Syntax Highlighting */
+.token-directive { color: #f43f5e; font-weight: 700; }
+.token-keyword { color: #38bdf8; font-weight: 700; }
+.token-type { color: #c084fc; font-weight: 700; }
+.token-string { color: #34d399; }
+.token-number { color: #fb923c; }
+.token-comment { color: #64748b; font-style: italic; }
+
+/* Sample Output Section */
+.output-box-neu {
+  background: var(--neu-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--neu-raised);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.output-toggle-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.output-terminal-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  color: var(--accent-orange);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+}
+
+.output-terminal-pre {
+  padding: 1.25rem 1.75rem;
+  background: #090d16;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: #a5f3fc;
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   NATURAL, CALM CAT ANIMATIONS (NON-DISTRACTING)
+   ========================================================================== */
+
+/* 1. Gentle Walking Cat across bottom edge (Calm, Slow) */
+.walking-cat-track {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 150;
+  overflow: hidden;
+}
+
+.walking-cat-entity {
+  position: absolute;
+  bottom: 6px;
+  right: -120px;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  animation: gentleWalk 34s linear infinite;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.walking-cat-entity img {
+  width: 65px;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+  animation: gentleWaddle 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes gentleWalk {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-120vw); }
+}
+
+@keyframes gentleWaddle {
+  0% { transform: translateY(0) rotate(-1deg); }
+  100% { transform: translateY(-4px) rotate(1deg); }
+}
+
+/* 2. Quiet Peeking Cat from bottom right corner */
+.peeking-cat-right {
+  position: fixed;
+  bottom: 100px;
+  right: -38px;
+  z-index: 140;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+}
+
+.peeking-cat-right:hover {
+  transform: translateX(-30px);
+}
+
+.peeking-cat-img {
+  width: 70px;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+}
+
+/* 3. Sleepy Cat on bottom-left corner */
+.sleepy-cat-corner {
+  position: fixed;
+  bottom: 15px;
+  left: 20px;
+  z-index: 130;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sleepy-cat-corner img {
+  width: 78px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+  animation: softBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes softBreathe {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03) translateY(-2px); }
+}
+
+/* ==========================================================================
+   Neumorphic Toast Notification ("Copied Successfully!")
+   ========================================================================== */
+
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 500;
+  pointer-events: none;
+}
+
+.neu-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--neu-bg);
+  box-shadow: 10px 10px 22px var(--shadow-dark), -10px -10px 22px var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: var(--text-primary);
+  padding: 0.95rem 1.6rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.neu-toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast-cat-mini {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--neu-inset-sm);
+  border: 1px solid rgba(234, 88, 12, 0.4);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background: var(--neu-bg);
+  box-shadow: 0 -8px 16px var(--shadow-dark-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-quote {
+  color: var(--accent-orange);
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .walking-cat-track {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-mascot-card {
+    margin: 1.5rem auto 0;
+  }
+
+  .neu-card {
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .card-cat-stamp, .card-arrow-box {
+    display: none;
+  }
+
+  .action-companion-bar {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .companion-cat-box {
+    justify-content: center;
+  }
+
+  .sleepy-cat-corner {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    width: calc(100% - 1rem);
+    padding: 0.65rem 1rem;
+    top: 0.5rem;
+  }
+
+  .hero-box {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .btn-big-copy-neu {
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .ide-line-numbers {
+    display: none;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .neu-toast {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   3-Second "MASALA DOSA?" Splash Screen
+   ========================================================================== */
+
+.splash-screen-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--neu-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s ease;
+}
+
+.splash-screen-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-card-neu {
+  background: var(--neu-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: 16px 16px 36px var(--shadow-dark), -16px -16px 36px var(--shadow-light);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  padding: 2.25rem 2.25rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  animation: splashPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes splashPopIn {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.splash-img-wrapper {
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--neu-raised);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  background: var(--neu-bg);
+  margin-bottom: 1.5rem;
+}
+
+.splash-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.splash-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.splash-text .orange-question {
+  color: var(--accent-orange);
+}
+
+.splash-timer-track {
+  width: 100%;
+  height: 6px;
+  background: var(--neu-bg);
+  box-shadow: var(--neu-inset-sm);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.splash-timer-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+  border-radius: var(--radius-full);
+  animation: timerProgress 1.5s linear forwards;
+}
+
+@keyframes timerProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}

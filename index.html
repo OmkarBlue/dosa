@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ece7dc">
+  <title>Data Structures Lab Programs 🐈 | Neumorphic Sigma Cat Edition</title>
+  <meta name="description" content="Soft Neumorphic Data Structures practical code library with Sigma Cat personality. Fast, clean, one-click access to complete source codes.">
+  
+  <!-- Fonts: Outfit, Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 3-Second "MASALA DOSA?" Splash Screen Intro -->
+  <div id="splash-screen" class="splash-screen-overlay">
+    <div class="splash-card-neu">
+      <div class="splash-img-wrapper">
+        <img src="assets/cats/cat_masala_dosa.jpg?v=3" alt="Masala Dosa Cat" class="splash-img">
+      </div>
+      <h1 class="splash-text">MASALA DOSA<span class="orange-question">?</span></h1>
+      <div class="splash-timer-track">
+        <div class="splash-timer-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subtle Orange Silhouette Watermarks in Background -->
+  <img src="assets/cats/silhouettes/cat_silhouette_stretching.svg" alt="" class="bg-silhouette-watermark bg-silhouette-top-right" aria-hidden="true">
+  <img src="assets/cats/silhouettes/cat_silhouette_sitting.svg" alt="" class="bg-silhouette-watermark bg-silhouette-bottom-left" aria-hidden="true">
+
+  <!-- Top Sticky Navigation Bar (Soft Neumorphic Floating Bar) -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#/" class="logo-group" title="DS Lab Neumorphic Cat Edition">
+        <div class="mascot-avatar-wrapper">
+          <img src="assets/cats/cat_tactical_gamer_cutout.png" alt="Tactical Hacker Cat" class="header-cat-img">
+        </div>
+        <div class="logo-text-box">
+          <span class="logo-title">DS Lab 🐈</span>
+          <span class="logo-sub">Sigma Cat Edition</span>
+        </div>
+      </a>
+
+      <div class="header-badges">
+        <div class="neu-badge active-status">
+          <span class="pulse-cat-dot"></span>
+          <span>Billi Online</span>
+        </div>
+        <div class="neu-badge" style="display: none; @media(min-width: 650px){display: flex;}">
+          <span>10 Programs</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    
+    <!-- ====================================================================
+         1. HOME PAGE VIEW (Neumorphic Clean Layout)
+         ==================================================================== -->
+    <section id="home-view" class="view-section active">
+      
+      <!-- Hero Box (Soft Neumorphic Card with Mascot) -->
+      <div class="hero-box">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-tag-pill">
+              <img src="assets/cats/silhouettes/cat_silhouette_sitting.svg" alt="Cat Icon">
+              <span>Data Structures Practical Library</span>
+            </div>
+            
+            <h1 class="hero-title">
+              Data Structures <span class="text-orange-gradient">Lab Programs</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+              Complete laboratory manual source codes. Fast, clean, one-click code copy and reference for all practical experiments.
+            </p>
+
+            <!-- Search & Filters -->
+            <div class="search-section">
+              <div class="search-box-row">
+                <svg class="search-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                  type="text" 
+                  id="search-input" 
+                  class="search-input-neu" 
+                  placeholder="Search experiments by name, number, or category... (Press '/' to search)"
+                  autocomplete="off"
+                >
+              </div>
+
+              <!-- Filter Buttons -->
+              <div class="category-chips-row">
+                <button class="neu-filter-btn active" data-category="all">
+                  <span>All Experiments</span>
+                  <span class="btn-badge">10</span>
+                </button>
+                <button class="neu-filter-btn" data-category="stack">
+                  <span>Stack</span>
+                  <span class="btn-badge">4</span>
+                </button>
+                <button class="neu-filter-btn" data-category="queue">
+                  <span>Queue</span>
+                  <span class="btn-badge">4</span>
+                </button>
+                <button class="neu-filter-btn" data-category="list">
+                  <span>Linked Lists</span>
+                  <span class="btn-badge">2</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Boss Mascot Display -->
+          <div id="hero-mascot-card" class="hero-mascot-card" title="Click cat for a sigma thought!">
+            <div id="hero-cat-bubble" class="hero-cat-bubble">
+              Le garreb, tu bhi kya aish karega! 😼
+            </div>
+            <div class="hero-cat-avatar">
+              <img src="assets/cats/cat_cap_mascot.png" alt="Chief Debugger Cat in Cap" class="hero-cat-img">
+            </div>
+            <span class="hero-cat-tag">CHIEF DEBUGGER 🐈</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Large Full-Width Clickable Experiment Cards Grid -->
+      <div id="experiments-container" class="cards-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         2. CODE PAGE VIEW (Distraction-Free Code with Safe Edge Cats)
+         ==================================================================== -->
+    <section id="code-view" class="view-section">
+      <div class="code-layout-wrapper">
+
+        <!-- Top Navigation -->
+        <div class="code-top-nav">
+          <a href="#/" id="back-btn" class="btn-back-neu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Experiments</span>
+            <kbd>Esc</kbd>
+          </a>
+
+          <div class="code-nav-arrows">
+            <button id="prev-exp-btn" class="arrow-nav-btn" title="Previous Experiment">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Prev</span>
+            </button>
+            <button id="next-exp-btn" class="arrow-nav-btn" title="Next Experiment">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Experiment Meta Box -->
+        <div class="code-meta-card">
+          <div class="code-tag-badge-row">
+            <span id="code-exp-num" class="code-number-pill">Experiment 01</span>
+            <span id="code-exp-cat" class="code-category-pill">Stack</span>
+            <span class="cat-stamp-text" style="margin-left: auto;">★ 100% Original Manual Code</span>
+          </div>
+
+          <h1 id="code-exp-title" class="code-experiment-title">Write a program to implement stack using arrays.</h1>
+
+          <div class="code-aim-objective-grid">
+            <div>
+              <strong>Aim:</strong>
+              <span id="code-exp-aim"></span>
+            </div>
+            <div>
+              <strong>Objective:</strong>
+              <span id="code-exp-obj"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Bar: Prominent COPY CODE Button & Polite Companion Cat -->
+        <div class="action-companion-bar">
+          <div class="copy-button-container">
+            <button id="big-copy-btn" class="btn-big-copy-neu" title="Click to copy full code (or press C)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>COPY CODE</span>
+            </button>
+          </div>
+
+          <!-- Companion Cat Outside Code Window -->
+          <div id="companion-cat-box" class="companion-cat-box" title="Click cat for another advice!">
+            <div class="companion-cat-avatar">
+              <img src="assets/cats/cat_businessman_coffee_cutout.png" alt="Corporate Cat">
+            </div>
+            <div class="companion-bubble-content">
+              <span class="companion-speaker">CORPORATE BILLI SAYS</span>
+              <span id="companion-cat-quote" class="companion-quote">Bhai, copy kar aur nikal.</span>
+            </div>
+          </div>
+
+          <!-- Download file button -->
+          <button id="download-btn" class="btn-download-neu" title="Download .c source file">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download .c</span>
+          </button>
+        </div>
+
+        <!-- Code Editor Window (IDE Style, Highly Readable Dark Container) -->
+        <div class="code-ide-window">
+          <div class="code-ide-header">
+            <div class="window-dots">
+              <span class="ide-dot red"></span>
+              <span class="ide-dot yellow"></span>
+              <span class="ide-dot green"></span>
+            </div>
+            <div class="ide-tab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span id="file-name">program.c</span>
+            </div>
+            <div class="ide-stats">
+              <span id="loc-count">0 lines</span>
+            </div>
+          </div>
+
+          <div class="code-scroll-container">
+            <div id="line-numbers" class="ide-line-numbers" aria-hidden="true"></div>
+            <pre class="code-pre-element"><code id="code-content"></code></pre>
+          </div>
+        </div>
+
+        <!-- Sample Output Section -->
+        <div id="output-section" class="output-box-neu">
+          <div id="output-header" class="output-toggle-header">
+            <span>Terminal Output Verification</span>
+            <span class="output-terminal-badge">STDOUT</span>
+          </div>
+          <pre id="output-body" class="output-terminal-pre"></pre>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div class="toast-container">
+    <div id="toast" class="neu-toast">
+      <img src="assets/cats/cat_cap_mascot.png" alt="Toast Cat" class="toast-cat-mini">
+      <span id="toast-message">Copied Successfully! 😼</span>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <p>Data Structures Lab Programs &bull; Sigma Cat Neumorphic Edition 🐈</p>
+    <p class="footer-quote">"Human detected. Intelligence not detected." — Billi</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="experiments-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
